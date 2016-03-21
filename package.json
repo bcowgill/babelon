@@ -10,6 +10,7 @@
   "scripts": {
     "postinstall": "ln -s ../../config/pre-commit .git/hooks/pre-commit; grunt",
     "test": "grunt coverage",
+    "build": "babel lib/babel -d lib/js",
     "start": "export NODE_ENV=production; forever start ./config/forever.prod.json",
     "stop": "forever stop functionaljs-prod",
     "restart": "forever restart functionaljs-prod",
@@ -37,6 +38,7 @@
     "node-noop": "^1.0.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.6.5",
     "chai": "^3.2.0",
     "grunt": "~0.4.5",
     "grunt-contrib-clean": "~0.5.0",

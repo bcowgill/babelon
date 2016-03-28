@@ -71,6 +71,7 @@ build = function (grunt) {
 		jshint: {
 			options: {
 				jshintrc: '.jshintrc',
+				reporter: require('jshint-stylish'),
 				globals: {},
 			},
 			gruntfile: {
@@ -94,6 +95,24 @@ build = function (grunt) {
 				},
 				spec: plans, // for coverage
 				src: ['test/**/*.js']
+			}
+		},
+		/**
+			Run an external command
+			@see {@link https://www.npmjs.com/package/grunt-run Grunt plugin for running script commands}
+		*/
+		run: {
+			flow: {
+				cmd: 'flow',
+				args: [
+					'--color=always',
+					'--strip-root',
+					'--one-line',
+					'--show-all-errors',
+					'--timeout=60',
+					'--retries=5',
+					'--old-output-format' // can't set this with grunt-flow
+				]
 			}
 		},
 		/**
@@ -205,6 +224,7 @@ build = function (grunt) {
 
 	// These plugins provide necessary tasks.
 	[
+		'grunt-run',
 		'grunt-contrib-clean',
 		'grunt-contrib-jshint',
 // off for the moment		'grunt-jsdoc',
@@ -232,10 +252,12 @@ build = function (grunt) {
 		'mocha-chai-sinon'
 	]);
 	grunt.registerTask('tests', ['test']);
+	grunt.registerTask('validate', ['check']);
 	grunt.registerTask('check', [
 		'jshint:gruntfile',
 		'jshint:lib',
-		'jshint:test'
+		'jshint:test',
+		'run:flow'
 	]);
 	grunt.registerTask('checktest', ['check', 'test']);
 	grunt.registerTask('checkcover', ['check', 'coverage']);

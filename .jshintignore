@@ -1,6 +1,8 @@
+.jshintignore
 node_modules/**/*.js
 node_modules/**/*.json
 doc/**/*.js
 doc/**/*.json
 lib/js/**/*.js
+**/flowtest*.js
 **/*.min.js

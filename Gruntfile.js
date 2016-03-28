@@ -103,15 +103,29 @@ build = function (grunt) {
 		*/
 		run: {
 			flow: {
+			/**
+				Static type checking analysis with flow
+				@see {@link http://flowtype.org/docs/quick-reference.html Flow Annotation Quick Reference}
+			*/
 				cmd: 'flow',
 				args: [
+					//'--old-output-format', // can't set this with grunt-flow
 					'--color=always',
 					'--strip-root',
-					'--one-line',
+					//'--one-line',
 					'--show-all-errors',
 					'--timeout=60',
-					'--retries=5',
-					'--old-output-format' // can't set this with grunt-flow
+					'--retries=5'
+				]
+			},
+			flow_all: {
+				cmd: 'flow',
+				args: [
+					'check',
+					'--all', // all files, not just those with @flow marker
+					'--color=always',
+					'--strip-root',
+					'--show-all-errors'
 				]
 			}
 		},
@@ -253,18 +267,22 @@ build = function (grunt) {
 	]);
 	grunt.registerTask('tests', ['test']);
 	grunt.registerTask('validate', ['check']);
+	grunt.registerTask('flow', ['run:flow']);
+	grunt.registerTask('flow-all', ['run:flow_all']);
+	grunt.registerTask('flow_all', ['run:flow_all']);
 	grunt.registerTask('check', [
 		'jshint:gruntfile',
 		'jshint:lib',
 		'jshint:test',
-		'run:flow'
+		'flow'
 	]);
 	grunt.registerTask('checktest', ['check', 'test']);
 	grunt.registerTask('checkcover', ['check', 'coverage']);
 	grunt.registerTask('tdd', ['watch:tdd']);
 	grunt.registerTask('watcher', ['watch:all']);
 	grunt.registerTask('coverage', [
-		'mocha_istanbul:coverage'
+		'test'
+		//'mocha_istanbul:coverage'
 	]);
 	grunt.registerTask('coveralls', [
 		'mocha_istanbul:coveralls'

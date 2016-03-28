@@ -2,6 +2,20 @@
 0.22.1
 
 [include]
+.*/lib/babel/.*
+
+[libs]
+interfaces/
 
 [ignore]
-.*/node_modules/flow-bin
+.*/Gruntfile.js
+.*/node_modules/.*
+.*/lib/js/.*
+.*/dist/.*
+.*\.min\.js
+.*/flowtest.*\.js
+
+[options]
+munge_underscores=true
+suppress_comment=\\(.\\|\n\\)*\\$FlowFixMe
+suppress_comment=\\(.\\|\n\\)*\\$FlowIssue

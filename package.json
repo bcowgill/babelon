@@ -13,6 +13,7 @@
     "lint": "eslint lib/babel/ test/",
     "build": "babel lib/babel -d lib/js",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
+    "flowall": "flow check --all --old-output-format; test $? -eq 0 -o $? -eq 2",
     "flowold": "flow --old-output-format; test $? -eq 0 -o $? -eq 2",
     "start": "export NODE_ENV=production; forever start ./config/forever.prod.json",
     "stop": "forever stop functionaljs-prod",

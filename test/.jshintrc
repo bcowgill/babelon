@@ -30,7 +30,6 @@
 	"quotmark": true,
 	"undef": true,
 	"unused": "strict",
-	"globalstrict": true,
 	"trailing": true,
 	"laxcomma": true,
 	"laxbreak": true,

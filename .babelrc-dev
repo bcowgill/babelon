@@ -1,0 +1,21 @@
+{
+  "presets": [
+    "es2015",
+    "react"
+  ],
+  "plugins": [
+    "transform-flow-comments",
+
+    "transform-member-expression-literals",
+    "transform-merge-sibling-variables",
+    "transform-property-literals",
+    "transform-undefined-to-void",
+
+    "syntax-async-functions",
+    "undeclared-variables-check",
+    "transform-strict-mode",
+    "transform-runtime",
+    "transform-es2015-classes",
+    "transform-class-properties"
+  ]
+}

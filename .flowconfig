@@ -14,7 +14,7 @@ interfaces/
 .*/lib/js/.*
 .*/dist/.*
 .*\.min\.js
-.*/not/flowtest.*\.js
+.*/flowtest.*\.js
 
 [options]
 munge_underscores=true

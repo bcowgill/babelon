@@ -1,0 +1,27 @@
+{
+  "presets": [
+    "es2015",
+    "react"
+  ],
+  "plugins": [
+    "transform-flow-strip-types"
+    "transform-remove-console",
+    "transform-remove-debugger",
+
+    "transform-minify-booleans",
+    "transform-simplify-comparison-operators",
+    "transform-node-env-inline",
+
+    "transform-member-expression-literals",
+    "transform-merge-sibling-variables",
+    "transform-property-literals",
+    "transform-undefined-to-void",
+
+    "syntax-async-functions",
+    "undeclared-variables-check",
+    "transform-strict-mode",
+    "transform-runtime",
+    "transform-es2015-classes",
+    "transform-class-properties"
+  ]
+}

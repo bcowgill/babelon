@@ -257,12 +257,34 @@ build = function (grunt) {
 				files: '<%= watch.tdd.files %>',
 				tasks: watch
 			}
+		},
+		/**
+			Transpile code from flow/es6 to vanilla javascript
+			@see {@link http://babeljs.io/docs/usage/options/ Grunt Babel options}
+		*/
+		babel: {
+			options: {
+				auxiliaryCommentBefore: 'STARTBABEL',
+				auxiliaryCommentAfter: 'ENDBABEL',
+				babelrc: true,
+				comments: true,
+				highlightCode: true,
+				sourceMap: 'both'//,
+				//presets: ['babel-preset-es2015']
+			},
+			// TODO Something wrong with configuration, using npm run babel for now
+			dist: {
+				files: {
+					'lib/js/build.js': 'lib/babel/**/*.js'
+				}
+			}
 		}
 	});
 
 	// These plugins provide necessary tasks.
 	[
 		'grunt-run',
+		'grunt-babel',
 		'grunt-contrib-clean',
 		'grunt-contrib-jshint',
 // off for the moment		'grunt-jsdoc',

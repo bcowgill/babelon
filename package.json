@@ -8,11 +8,12 @@
     "node": "4.2.1"
   },
   "scripts": {
+    "env": "env",
     "postinstall": "ln -s ../../config/pre-commit .git/hooks/pre-commit; grunt",
     "test": "grunt coverage",
     "lint": "eslint lib/flow/ lib/babel/ test/",
     "lintfix": "eslint --fix lib/flow/ lib/babel/ test/",
-    "build": "babel lib/babel -d lib/js",
+    "build": "babel lib/babel --out-dir=lib/js --source-maps=both --auxiliary-comment-before='STARTBABEL' --auxiliary-comment-after='ENDBABEL'",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
     "flowall": "flow check --all --old-output-format; test $? -eq 0 -o $? -eq 2",
     "flowold": "flow --old-output-format; test $? -eq 0 -o $? -eq 2",
@@ -58,6 +59,7 @@
     "eslint-plugin-react": "^4.2.3",
     "flow-bin": "^0.22.1",
     "grunt": "^0.4.5",
+    "grunt-babel": "^6.0.0",
     "grunt-contrib-clean": "^1.0.0",
     "grunt-contrib-jshint": "^1.0.0",
     "grunt-contrib-watch": "^1.0.0",

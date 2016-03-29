@@ -1,4 +1,4 @@
-/*jshint indent: 4, smarttabs: true, maxcomplexity: 6, maxstatements: 25, maxlen: 140 */
+/*jshint indent: 4, smarttabs: true, maxcomplexity: 6, maxstatements: 29, maxlen: 140 */
 /*global module:false */
 'use strict';
 /**
@@ -129,6 +129,20 @@ build = function (grunt) {
 					'--color=always',
 					'--strip-root',
 					'--show-all-errors'
+				]
+			},
+			eslint: {
+				cmd: 'npm',
+				args: [
+					'run-script',
+					'lint'
+				]
+			},
+			eslintfix: {
+				cmd: 'npm',
+				args: [
+					'run-script',
+					'lintfix'
 				]
 			},
 			build: {
@@ -277,6 +291,8 @@ build = function (grunt) {
 	]);
 	grunt.registerTask('tests', ['test']);
 	grunt.registerTask('validate', ['check']);
+	grunt.registerTask('eslint', ['run:eslint']);
+	grunt.registerTask('eslintfix', ['run:eslintfix']);
 	grunt.registerTask('flow', ['run:flow']);
 	grunt.registerTask('flow-all', ['run:flow_all']);
 	grunt.registerTask('flow_all', ['run:flow_all']);
@@ -284,6 +300,7 @@ build = function (grunt) {
 		'jshint:gruntfile',
 		'jshint:lib',
 		'jshint:test',
+		'eslint',
 		'flow'
 	]);
 	grunt.registerTask('checktest', ['check', 'test']);
@@ -299,6 +316,7 @@ build = function (grunt) {
 	]);
 	grunt.registerTask('build', [
 		'clean:babel',
+		'eslintfix',
 		'run:build']);
 	grunt.registerTask('windows', ['check']);
 	grunt.registerTask('single', ['jshint:single']);

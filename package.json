@@ -11,6 +11,7 @@
     "postinstall": "ln -s ../../config/pre-commit .git/hooks/pre-commit; grunt",
     "test": "grunt coverage",
     "lint": "eslint lib/flow/ lib/babel/ test/",
+    "lintfix": "eslint --fix lib/flow/ lib/babel/ test/",
     "build": "babel lib/babel -d lib/js",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
     "flowall": "flow check --all --old-output-format; test $? -eq 0 -o $? -eq 2",

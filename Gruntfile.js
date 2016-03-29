@@ -60,6 +60,9 @@ build = function (grunt) {
 		clean: {
 			jsdoc: {
 				src: ['doc/']
+			},
+			babel: {
+				src: ['lib/js/']
 			}
 		},
 		/**
@@ -126,6 +129,13 @@ build = function (grunt) {
 					'--color=always',
 					'--strip-root',
 					'--show-all-errors'
+				]
+			},
+			build: {
+				cmd: 'npm',
+				args: [
+					'run-script',
+					'build'
 				]
 			}
 		},
@@ -257,7 +267,7 @@ build = function (grunt) {
 
 	// Default task.
 	grunt.registerTask('default', ['all']);
-	grunt.registerTask('all', ['check', 'doc', 'coverage']);
+	grunt.registerTask('all', ['check', 'doc', 'coverage', 'build']);
 	grunt.registerTask('doc', ['clean:jsdoc' /* off for the moment , 'jsdoc' */]);
 	grunt.registerTask('docs', ['doc']);
 	grunt.registerTask('test', [
@@ -287,6 +297,9 @@ build = function (grunt) {
 	grunt.registerTask('coveralls', [
 		'mocha_istanbul:coveralls'
 	]);
+	grunt.registerTask('build', [
+		'clean:babel',
+		'run:build']);
 	grunt.registerTask('windows', ['check']);
 	grunt.registerTask('single', ['jshint:single']);
 };

@@ -2,6 +2,7 @@
 0.22.1
 
 [include]
+.*/lib/flow/.*
 .*/lib/babel/.*
 
 [libs]
@@ -17,5 +18,5 @@ interfaces/
 
 [options]
 munge_underscores=true
-suppress_comment=\\(.\\|\n\\)*\\$FlowFixMe
-suppress_comment=\\(.\\|\n\\)*\\$FlowIssue
+suppress_comment=\\(.\\|\n\\)*\\$FLOWFIXME
+suppress_comment=\\(.\\|\n\\)*\\$FLOWISSUE

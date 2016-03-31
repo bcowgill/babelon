@@ -12,6 +12,9 @@
     "transform-simplify-comparison-operators",
 
 //ERROR    "transform-eval",
+// TypeError: lib/babel/_test/babeltest.js: parse is not a function
+//    at PluginPass.CallExpression (/home/bcowgill/workspace/play/babelon/node_modules/babel-plugin-transform-eval/lib/index.js:19:21)
+
 
     "transform-flow-comments",
 //    "transform-flow-strip-types",
@@ -21,26 +24,35 @@
     "transform-inline-environment-variables",
 //    "transform-node-env-inline",
 
-//ERROR    "transform-object-assign",
+    "transform-object-assign",
+    "transform-object-set-prototype-of-to-assign",
+    "transform-proto-to-assign",
 
-
-
-
-
-
-
-
-
-
-
-
-    "transform-property-literals",
+    "syntax-function-sent",
+    "transform-regenerator",
+    "transform-runtime",
+    "transform-strict-mode",
     "transform-undefined-to-void",
 
+    "external-helpers",
+// disable as generated code may produce some undeclared variables!!
+//    "undeclared-variables-check",
+
+    "transform-es5-property-mutators",
+
+    "transform-es3-member-expression-literals",
+    "transform-es3-property-literals",
+
+    "transform-es2015-for-of",
+
+    "transform-es2015-block-scoping",
+
+
+
+
     "syntax-async-functions",
-    "undeclared-variables-check",
-    "transform-strict-mode",
-    "transform-runtime",
+    "transform-property-literals",
+
     "transform-es2015-classes",
     "transform-class-properties"
   ]
